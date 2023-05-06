@@ -7,11 +7,11 @@ public class SimpleSorting {
         long startTime = System.nanoTime();
         for(int i=0;i<lista.length;++i){
             int j = i;
-            while(j > 0 && lista[j-1]>lista[j]){ // Szukam odpowiedniego miejsca żeby wstawić następny element
+            while(j > 0 && lista[j-1]>lista[j]) { // Szukam odpowiedniego miejsca żeby wstawić następny element
                 int currentElement = lista[j];
                 lista[j] = lista[j-1];
                 lista[j-1] = currentElement;
-                j = j-1;
+                j--;
             }
         }
         return System.nanoTime() - startTime;
