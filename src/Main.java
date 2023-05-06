@@ -1,31 +1,25 @@
 public class Main {
     public static void main(String[] args) {
         int arrayLength = 10000;
-        int divisionFromNanoSeconds = 100;  //100=mikrosekundy, 1000000=milisekundy.
+        int div = 100;  // dzielenie z nanosekund: 100=mikrosekundy, 1000000=milisekundy.
+
+        int[] randomArray = RandomArraysGenerator.getRandomArray(arrayLength);
+        int[] ascendingArray = RandomArraysGenerator.getAscendingArray(arrayLength);
+        int[] descendingArray = RandomArraysGenerator.getDescendingArray(arrayLength);
+
         System.out.println("czasy w mikrosekundach:");
-        System.out.println("\ndane losowe:");
-        System.out.println(SimpleSorting.InsertSort(RandomArraysGenerator.getRandomArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(SimpleSorting.SelectSort(RandomArraysGenerator.getRandomArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(SimpleSorting.bubbleSort(RandomArraysGenerator.getRandomArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(MergeSort.mergeSortTime(RandomArraysGenerator.getRandomArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(QuickSort.quickSortTime(RandomArraysGenerator.getRandomArray(arrayLength))/divisionFromNanoSeconds);
+        runSorting(div, randomArray,"Dane losowe:");
+        runSorting(div, ascendingArray,"Dane posortowane rosnąco:");
+        runSorting(div, descendingArray,"Dane posortowane malejąco:");
+    }
 
-        System.out.println("\nDane posortowane rosnąco:");
-        System.out.println(SimpleSorting.InsertSort(RandomArraysGenerator.getAscendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(SimpleSorting.SelectSort(RandomArraysGenerator.getAscendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(SimpleSorting.bubbleSort(RandomArraysGenerator.getAscendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(MergeSort.mergeSortTime(RandomArraysGenerator.getAscendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(QuickSort.quickSortTime(RandomArraysGenerator.getAscendingArray(arrayLength))/divisionFromNanoSeconds);
-
-        System.out.println("\nDane posortowane malejąco:");
-        System.out.println(SimpleSorting.InsertSort(RandomArraysGenerator.getDescendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(SimpleSorting.SelectSort(RandomArraysGenerator.getDescendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(SimpleSorting.bubbleSort(RandomArraysGenerator.getDescendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(MergeSort.mergeSortTime(RandomArraysGenerator.getDescendingArray(arrayLength))/divisionFromNanoSeconds);
-        System.out.println(QuickSort.quickSortTime(RandomArraysGenerator.getDescendingArray(arrayLength))/divisionFromNanoSeconds);
-
-
-
-
+    static void runSorting(int division, int[] array,String text) {
+        System.out.println("\n"+text);
+        System.out.println(SimpleSorting.InsertSort(array)/ division);
+        System.out.println(SimpleSorting.SelectSort(array)/ division);
+        System.out.println(SimpleSorting.bubbleSort(array)/ division);
+        System.out.println(MergeSort.mergeSortTime(array)/ division);
+        System.out.println(QuickSort.quickSortTime(array)/ division);
+        System.out.println(HeapSort.heapSortTime(array)/ division);
     }
 }
