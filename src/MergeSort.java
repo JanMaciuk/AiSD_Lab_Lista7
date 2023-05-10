@@ -26,20 +26,22 @@ public class MergeSort {
     }
     private static void merge(int[] array, int[] left, int[] right) {
 
-        int i = 0, j = 0, k = 0;
-        while (i < left.length && j < right.length) {
-            if (left[i] <= right[j]) {
-                array[k++] = left[i++];
+        int leftIndex = 0, rightIndex = 0, arrayIndex = 0;
+        //Przenoszę większy element z lewej i prawej strony do array, dopóki jedna z list się nie skończy.
+        while (leftIndex < left.length && rightIndex < right.length) {
+            if (left[leftIndex] <= right[rightIndex]) {
+                array[arrayIndex++] = left[leftIndex++];
             }
             else {
-                array[k++] = right[j++];
+                array[arrayIndex++] = right[rightIndex++];
             }
         }
-        while (i < left.length) {
-            array[k++] = left[i++];
+        //Jeżeli jedna lista się skończy, to przenoszę elementy z drugiej bez porównywania (nie ma do czego porównywać)
+        while (leftIndex < left.length) {
+            array[arrayIndex++] = left[leftIndex++];
         }
-        while (j < right.length) {
-            array[k++] = right[j++];
+        while (rightIndex < right.length) {
+            array[arrayIndex++] = right[rightIndex++];
         }
     }
 }

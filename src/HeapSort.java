@@ -8,7 +8,7 @@ public class HeapSort {
     }
     private static void sort(int[] array) {
 
-        //Buduje początkowy kopiec
+        //Buduje początkowy kopiec, wykonując dla elementów, które nie są liśćmi. (indeksy do n/2-1)
         for (int i = array.length/2 - 1; i >= 0; i--)
             buildHeap(array, array.length, i);
 
